@@ -1,0 +1,18 @@
+{
+    "name": "singer-web-service",
+    "version": "1.0.0",
+    "keywords": [
+        "util",
+        "functional",
+        "server",
+        "client",
+        "browser"
+    ],
+    "author": "KavishManjithaPerera",
+    "contributors": [],
+    "dependencies": {
+        "body-parser": "^1.16.1",
+        "express": "^4.14.1",
+        "mysql": "^2.13.0"
+    }
+}
