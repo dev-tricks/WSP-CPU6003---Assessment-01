@@ -39,6 +39,7 @@ public class ProductService {
         List<Product> productList = new ArrayList<>();
         final List<Supplier> allActiveSuppliers = supplierRepository.findAll();
         for (final Supplier supplier : allActiveSuppliers) {
+            System.out.println(supplier.getProductApi());
             final List<Product> products = getProductsByApi(supplier.getProductApi(), supplier.getCompanyName());
             productList.addAll(products);
         }

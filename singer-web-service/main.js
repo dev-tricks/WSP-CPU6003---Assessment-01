@@ -33,7 +33,7 @@ var server = app.listen(8099, "127.0.0.1", function () {
 app.get('/product', function (req, res) {
   connection.query('select * from product', function (error, results, fields) {
     if (error) throw error;
-    res.end(JSON.stringify(results));
+    res.json(results);
   });
 });
 

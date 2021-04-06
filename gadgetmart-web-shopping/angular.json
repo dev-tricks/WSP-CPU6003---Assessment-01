@@ -3,161 +3,190 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "gadgetmart-web-admin": {
-      "root": "",
-      "sourceRoot": "src",
+    "storefront": {
       "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/storefront",
+      "sourceRoot": "projects/storefront/src",
       "prefix": "app",
-      "schematics": {},
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/gadgetmart-web-admin",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.app.json",
+            "outputPath": "dist/storefront/browser",
+            "index": "projects/storefront/src/index.html",
+            "main": "projects/storefront/src/main.ts",
+            "polyfills": "projects/storefront/src/polyfills.ts",
+            "tsConfig": "projects/storefront/tsconfig.app.json",
+            "aot": true,
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "projects/storefront/src/favicon.ico",
+              "projects/storefront/src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/photoswipe/dist",
+                "output": "assets/vendor/photoswipe"
+              }
             ],
             "styles": [
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "./node_modules/font-awesome/css/font-awesome.min.css",
-              "./node_modules/admin-lte/bower_components/Ionicons/css/ionicons.min.css",
-              "./node_modules/admin-lte/dist/css/AdminLTE.min.css",
-              "./node_modules/admin-lte/dist/css/skins/skin-green.min.css",
-              "./node_modules/admin-lte/bower_components/morris.js/morris.css",
-              "./node_modules/admin-lte/bower_components/jvectormap/jquery-jvectormap.css",
-              "./node_modules/admin-lte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css",
-              "./node_modules/admin-lte/bower_components/bootstrap-daterangepicker/daterangepicker.css",
-              "./node_modules/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css",
-              "./node_modules/admin-lte/bower_components/select2/dist/css/select2.min.css",
-              "./node_modules/ng-snotify/styles/dark.css",
-              "./node_modules/ngx-smart-modal/ngx-smart-modal.css",
-              "src/styles.css"
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
+              "projects/storefront/src/styles.scss",
+              "projects/storefront/src/scss/style.header-spaceship-variant-one.scss",
+              "projects/storefront/src/scss/style.header-spaceship-variant-two.scss",
+              "projects/storefront/src/scss/style.header-spaceship-variant-three.scss",
+              "projects/storefront/src/scss/style.header-classic-variant-one.scss",
+              "projects/storefront/src/scss/style.header-classic-variant-two.scss",
+              "projects/storefront/src/scss/style.header-classic-variant-three.scss",
+              "projects/storefront/src/scss/style.header-classic-variant-four.scss",
+              "projects/storefront/src/scss/style.header-classic-variant-five.scss",
+              "projects/storefront/src/scss/style.mobile-header-variant-one.scss",
+              "projects/storefront/src/scss/style.mobile-header-variant-two.scss"
             ],
-            "scripts": [
-              "./node_modules/admin-lte/bower_components/jquery/dist/jquery.min.js",
-              "./node_modules/admin-lte/bower_components/jquery-ui/jquery-ui.min.js",
-              "src/assets/js/conflict-resolver.js",
-              "./node_modules/admin-lte/bower_components/bootstrap/dist/js/bootstrap.min.js",
-              "./node_modules/admin-lte/bower_components/raphael/raphael.min.js",
-              "./node_modules/admin-lte/bower_components/morris.js/morris.min.js",
-              "./node_modules/admin-lte/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js",
-              "./node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js",
-              "./node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js",
-              "./node_modules/admin-lte/bower_components/jquery-knob/dist/jquery.knob.min.js",
-              "./node_modules/admin-lte/bower_components/moment/min/moment.min.js",
-              "./node_modules/admin-lte/bower_components/bootstrap-daterangepicker/daterangepicker.js",
-              "./node_modules/admin-lte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js",
-              "./node_modules/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js",
-              "./node_modules/admin-lte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js",
-              "./node_modules/admin-lte/bower_components/fastclick/lib/fastclick.js",
-              "./node_modules/admin-lte/dist/js/adminlte.min.js",
-              "./node_modules/admin-lte/bower_components/select2/dist/js/select2.full.min.js",
-              "./node_modules/ngx-smart-modal/bundles/ngx-smart-modal.umd.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "projects/storefront/src/environments/environment.ts",
+                  "with": "projects/storefront/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "3mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "16kb",
+                  "maximumError": "32kb"
+                }
+              ]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "gadgetmart-web-admin:build"
+            "browserTarget": "storefront:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "gadgetmart-web-admin:build:production"
+              "browserTarget": "storefront:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "gadgetmart-web-admin:build"
+            "browserTarget": "storefront:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              "src/styles.css"
-            ],
-            "scripts": [],
+            "main": "projects/storefront/src/test.ts",
+            "polyfills": "projects/storefront/src/polyfills.ts",
+            "tsConfig": "projects/storefront/tsconfig.spec.json",
+            "karmaConfig": "projects/storefront/karma.conf.js",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ]
+              "projects/storefront/src/favicon.ico",
+              "projects/storefront/src/assets"
+            ],
+            "styles": [
+              "projects/storefront/src/styles.scss"
+            ],
+            "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
+              "projects/storefront/tsconfig.app.json",
+              "projects/storefront/tsconfig.spec.json",
+              "projects/storefront/e2e/tsconfig.json",
+              "projects/storefront/tsconfig.server.json"
             ],
             "exclude": [
               "**/node_modules/**"
             ]
           }
-        }
-      }
-    },
-    "gadgetmart-web-admin-e2e": {
-      "root": "e2e/",
-      "projectType": "application",
-      "architect": {
+        },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "gadgetmart-web-admin:serve"
+            "protractorConfig": "projects/storefront/e2e/protractor.conf.js",
+            "devServerTarget": "storefront:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "gadgetmart-web-admin:serve:production"
+              "devServerTarget": "storefront:serve:production"
             }
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
+            "outputPath": "dist/storefront/server",
+            "main": "projects/storefront/server.ts",
+            "tsConfig": "projects/storefront/tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "projects/storefront/src/environments/environment.ts",
+                  "with": "projects/storefront/src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "storefront:build",
+            "serverTarget": "storefront:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "storefront:build:production",
+              "serverTarget": "storefront:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "storefront:build:production",
+            "serverTarget": "storefront:server:production",
+            "routes": [
+              "/"
             ]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }
     }
   },
-  "defaultProject": "gadgetmart-web-admin",
-  "cli": {
-    "analytics": "7ed44635-000f-4317-9398-d95931055f98"
-  }
+  "defaultProject": "storefront"
 }

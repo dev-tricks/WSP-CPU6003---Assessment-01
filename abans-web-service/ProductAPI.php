@@ -12,8 +12,10 @@ if (mysqli_num_rows($result) > 0) {
 } else {
     echo "data not found";
 }
+
 //encode data
-echo json_encode($data);
+header('Content-Type: application/json');
+echo json_encode($data, JSON_UNESCAPED_UNICODE);
 
 //close mysql connection
 mysqli_close($conn);
